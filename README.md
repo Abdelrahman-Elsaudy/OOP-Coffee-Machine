@@ -36,7 +36,7 @@
 Dividing the code into 4 coding pages:
 - `menu.py` which contains the drinks, their ingredients and cost.
 - `process.py` which contains the _Process_ class in which:
-  -[x] Attributes are the machine stock ingredients and money, and a function to print them when the user types "report".
+  - Attributes are the machine stock ingredients and money, and a function to print them when the user types "report".
 ```
         self.resources = {
             "water": 300,
@@ -46,7 +46,7 @@ Dividing the code into 4 coding pages:
         }
         self.beverage_list = [beverage for beverage in MENU]
 ```
-  -[x] A function to check if the user input is in the `MENU`.
+  - A function to check if the user input is in the `MENU`.
 ```
     def check_menu(self, beverage):
         if beverage not in self.beverage_list:
@@ -55,7 +55,7 @@ Dividing the code into 4 coding pages:
         else:
             return True
 ```
-  -[x] A function to check if the machine has enough stock of ingredients to make the beverage.
+  - A function to check if the machine has enough stock of ingredients to make the beverage.
 ```
     def check_resources(self, beverage):
         self.make_beverage = True
@@ -66,7 +66,7 @@ Dividing the code into 4 coding pages:
                     self.make_beverage = False
         return self.make_beverage
 ```
-  -[x] A function to make the beverage (subtract the beverage ingredients from the stock ingredients and add the beverage cost to the stock money).
+  - A function to make the beverage (subtract the beverage ingredients from the stock ingredients and add the beverage cost to the stock money).
 Note: this function gets called after the machine checks that the user provided enough money (will be explained later).
 ```
     def brewing(self, beverage):
