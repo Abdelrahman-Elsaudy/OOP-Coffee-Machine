@@ -1,23 +1,19 @@
-# check if input in menu.
-# check if there are enough resources.
-# check if money entered is enough.
-# if yes, add beverage price to earnings, make beverage and give the change.
-
 from process import Process
 from money import Money
 
 process = Process()
 money = Money()
-machine_on = True
 
+
+machine_on = True
 while machine_on:
-    beverage = input("What would you like? (espresso, latte, cappuccino) or type 'report': ").lower()
-    if beverage == "off":
+    order = input("What would you like? (espresso, latte, cappuccino) or type 'report': ").lower()
+    if order == "off":
         machine_on = False
-    elif beverage == "report":
-        process.resources["money"] = money.earnings["money"]    # to merge both resources and money reports.
+    elif order == "report":
         process.report()
-    elif process.check_menu(beverage):
-        if process.check_resources(beverage) != False and money.checking(beverage) != False:
-                process.brewing(beverage)
-                money.collecting_money(beverage)
+    else:
+        if process.check_menu(order) and process.check_resources(order) and money.checking(order):
+            process.brewing(order)
+            print(f"Here is ${money.change} in change.")
+            print(f"Here is your {order}☕, enjoy.")
